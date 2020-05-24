@@ -1,0 +1,22 @@
+int sensor = 13;  // Digital pin D7
+int role = 12;
+
+void setup() {
+  pinMode(sensor, INPUT);
+  pinMode(role, OUTPUT);
+  Serial.begin(115200);
+}
+
+void loop() {
+  long state = digitalRead(sensor);
+  if (state == HIGH) {
+    Serial.println("Motion detected!");
+    digitalWrite (role, LOW);
+    delay(180000);
+  }
+  else {
+    Serial.println("No motion detected.");
+    digitalWrite (role, HIGH);
+    delay(1000);
+  }
+}
